@@ -1,11 +1,16 @@
 import React from "react"
+import "../App.css"
 
 const Filter = (props) => {
   return (
-    <form>
+    <form className="form">
       <div>
-        filter shown with:
-        <input value={props.searchTerm} onChange={props.handleSearch} />
+        <p className="sansserif">filter shown with:</p>
+        <input
+          className="field"
+          value={props.searchTerm}
+          onChange={props.handleSearch}
+        />
       </div>
     </form>
   )

@@ -4,14 +4,6 @@ import "./index.css"
 import App from "./App"
 import * as serviceWorker from "./serviceWorker"
 
-import axios from "axios"
-
-const promise = axios.get("http://localhost:3001/recipes")
-
-promise.then((res) => {
-  console.log(res)
-})
-
 ReactDOM.render(
   <React.StrictMode>
     <App />

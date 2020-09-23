@@ -28,7 +28,10 @@ const createRecipe = (newRecipe) => {
 
   return req
     .then((res) => res.data)
-    .then((res) => console.log(`${newRecipe}` + "has been added"))
+    .then((data) => {
+      console.log(data, "has been added")
+      return data
+    })
     .catch((error) => {
       console.log(error.response.data.error)
       throw Error(error.response.data.error)
