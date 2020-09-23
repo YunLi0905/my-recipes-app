@@ -7,7 +7,7 @@ const Recipes = ({ recipes, searchTerm }) => {
       {recipes
         .filter((r) => r.name.toLowerCase().includes(searchTerm))
         .map((r) => (
-          <Recipe key={r.id} recipe={r} />
+          <div>{Recipe(r)}</div>
         ))}
     </ul>
   )

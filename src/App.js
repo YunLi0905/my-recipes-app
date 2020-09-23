@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 import Filter from "./components/filter"
-import Recipe from "./components/recipe"
+import Recipes from "./components/recipes"
 
 import recipeService from "./services/recipeService"
 import RecipeForm from "./components/recipeForm"
@@ -71,7 +71,8 @@ const App = () => {
 
   return (
     <div className="appBorder">
-      <h2>Reseptit</h2>
+      <h2 className="header">Omat Reseptit</h2>
+
       <Filter searchTerm={searchTerm} handleSearch={handleSearch} />
       <h2>add a new</h2>
       <RecipeForm
@@ -83,11 +84,17 @@ const App = () => {
         newMethod={newMethod}
         handleMethodChange={handleMethodChange}
       />
+      <h2>Recipes</h2>
       <div>
-        <h2>Recipes</h2>
-        {recipes.map((r) => (
-          <div>{Recipe(r)}</div>
-        ))}
+        <p className="column">
+          <Recipes recipes={recipes} searchTerm={searchTerm} />
+        </p>
+        <p className="column">
+          <Recipes recipes={recipes} searchTerm={searchTerm} />
+        </p>
+        <p className="column">
+          <Recipes recipes={recipes} searchTerm={searchTerm} />
+        </p>
       </div>
     </div>
   )

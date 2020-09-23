@@ -7,7 +7,7 @@ const Filter = (props) => {
       <div>
         <p className="sansserif">filter shown with:</p>
         <input
-          className="field"
+          className="search"
           value={props.searchTerm}
           onChange={props.handleSearch}
         />
