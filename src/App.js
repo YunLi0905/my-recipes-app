@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from "react"
 
-import Filter from "./components/filter"
-import Recipes from "./components/recipes"
-
 import recipeService from "./services/recipeService"
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+} from "react-router-dom"
+
+import Recipes from "./components/recipes"
+import Home from "./pages/homepage"
 import RecipeForm from "./components/recipeForm"
+import Recipe from "./components/recipe"
 
 const App = () => {
   const [recipes, setRecipes] = useState([])
@@ -12,7 +21,6 @@ const App = () => {
   const [newName, setNewName] = useState("")
   const [newIngredients, setNewIngredients] = useState([])
   const [newMethod, setNewMethod] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     console.log("initialRecipes")
@@ -20,6 +28,7 @@ const App = () => {
       setRecipes(initialRecipes)
     })
   }, [])
+
   console.log("recipes: ", recipes)
 
   const handleNameChange = (event) => {
@@ -64,39 +73,45 @@ const App = () => {
       })
   }
 
-  const handleSearch = (event) => {
-    event.preventDefault()
-    setSearchTerm(event.target.value)
+  const padding = {
+    padding: 5,
   }
 
-  return (
-    <div className="appBorder">
-      <h2 className="header">Omat Reseptit</h2>
+  const match = useRouteMatch("/recipes/:id")
+  const recipe = match
+    ? recipes.find((r) => r.id === Number(match.params.id))
+    : null
 
-      <Filter searchTerm={searchTerm} handleSearch={handleSearch} />
-      <h2>add a new</h2>
-      <RecipeForm
-        addRecipe={addRecipe}
-        newName={newName}
-        handleNameChange={handleNameChange}
-        newIngredients={newIngredients}
-        handleIngredientsChange={handleIngredientsChange}
-        newMethod={newMethod}
-        handleMethodChange={handleMethodChange}
-      />
-      <h2>Recipes</h2>
-      <div>
-        <p className="column">
-          <Recipes recipes={recipes} searchTerm={searchTerm} />
-        </p>
-        <p className="column">
-          <Recipes recipes={recipes} searchTerm={searchTerm} />
-        </p>
-        <p className="column">
-          <Recipes recipes={recipes} searchTerm={searchTerm} />
-        </p>
+  return (
+    <Router>
+      <div className="topnav">
+        <Link style={padding} className="navbarFont" to="/">
+          Home
+        </Link>
+
+        <Link style={padding} className="navbarFont" to="/recipes">
+          Recipes
+        </Link>
+
+        <Link style={padding} className="navbarFont" to="/create">
+          add recipe
+        </Link>
       </div>
-    </div>
+      <Switch>
+        <Route path="/recipes/:id">
+          <Recipe recipe={recipe} />
+        </Route>
+        <Route path="/create">
+          <RecipeForm />
+        </Route>
+        <Route path="/recipes">
+          <Recipes recipes={recipes} />
+        </Route>
+        <Route path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </Router>
   )
 }
 

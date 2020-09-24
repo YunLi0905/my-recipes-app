@@ -3,11 +3,11 @@ import "../App.css"
 
 const Filter = (props) => {
   return (
-    <form className="form">
+    <form>
       <div>
-        <p className="sansserif">filter shown with:</p>
         <input
           className="search"
+          placeholder="Search recipe"
           value={props.searchTerm}
           onChange={props.handleSearch}
         />

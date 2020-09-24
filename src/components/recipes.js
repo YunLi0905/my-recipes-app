@@ -1,15 +1,21 @@
 import React from "react"
 import Recipe from "./recipe"
 
+import { BrowserRouter as Link } from "react-router-dom"
+
 const Recipes = ({ recipes, searchTerm }) => {
   return (
-    <ul>
-      {recipes
-        .filter((r) => r.name.toLowerCase().includes(searchTerm))
-        .map((r) => (
-          <div>{Recipe(r)}</div>
+    <div>
+      <h2>Recipes</h2>
+      <ul>
+        {recipes.map((r) => (
+          <div>
+            <Link to={`/recipes/${r.id}`}>{r.name}</Link>
+            <div className="column">{Recipe(r)}</div>
+          </div>
         ))}
-    </ul>
+      </ul>
+    </div>
   )
 }
 
