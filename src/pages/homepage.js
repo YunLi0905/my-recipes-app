@@ -4,7 +4,6 @@ import Filter from "../components/filter"
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("")
-
   const handleSearch = (event) => {
     event.preventDefault()
     setSearchTerm(event.target.value)
@@ -13,11 +12,6 @@ const Home = () => {
   return (
     <div>
       <h2 className="head-image">
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
         <div className="head-text">
           <h1 className="appHeaderText">Omat Reseptit</h1>
           <Filter

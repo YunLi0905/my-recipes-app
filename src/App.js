@@ -73,10 +73,6 @@ const App = () => {
       })
   }
 
-  const padding = {
-    padding: 5,
-  }
-
   const match = useRouteMatch("/recipes/:id")
   const recipe = match
     ? recipes.find((r) => r.id === Number(match.params.id))
@@ -85,17 +81,17 @@ const App = () => {
   return (
     <Router>
       <div className="topnav">
-        <Link style={padding} className="navbarFont" to="/">
-          Home
-        </Link>
-
-        <Link style={padding} className="navbarFont" to="/recipes">
-          Recipes
-        </Link>
-
-        <Link style={padding} className="navbarFont" to="/create">
-          add recipe
-        </Link>
+        <ul>
+          <Link className="navbarFont" to="/">
+            Home
+          </Link>
+          <Link className="navbarFont" to="/recipes">
+            Reseptit
+          </Link>
+          <Link className="navbarFont" to="/create">
+            Lisää resepti
+          </Link>
+        </ul>
       </div>
       <Switch>
         <Route path="/recipes/:id">

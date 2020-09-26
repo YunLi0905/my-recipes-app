@@ -31,14 +31,14 @@
     url("FoodBackground.jpg");
 
   /* Set a specific height */
-  height: 70%;
+  height: 80%;
 
   /* Position and center the image to scale nicely on all screens */
-  background-position: center;
+  background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-  min-height: 70vh;
+  position: bottom;
+  min-height: 90vh;
 }
 
 .head-text {
@@ -126,29 +126,28 @@
 .topnav {
   list-style-type: none;
   margin: 0;
-  padding: 0;
+  padding: 5px;
   overflow: hidden;
-  background-color: #333;
-  height: 70px;
-}
-
-.li {
-  display: inline;
-  float: left;
+  background-color: white;
+  height: 80px;
 }
 
 .navbarFont {
   display: block;
-  color: white;
+  color: rgb(58, 55, 55);
   text-align: center;
-  padding: 20px 30px;
+  padding: 20px 10px;
   text-decoration: none;
+  font-weight: bold;
   font-size: 20px;
-  display: inline;
+  display: inline-table;
   list-style-type: none;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .navbarFont:hover {
   background-color: #ddd;
   color: black;
+  padding: 20px 10px;
+  border-radius: 5px;
 }
