@@ -1,32 +1,73 @@
-import React from "react"
+import React, { useState } from "react"
+import recipeService from "../services/recipeService"
 import "../App.css"
 
-const RecipeForm = (props) => {
-  console.log(props)
+const RecipeForm = () => {
+  const [newName, setNewName] = useState("")
+  const [newIngredients, setNewIngredients] = useState([])
+  const [newMethod, setNewMethod] = useState([])
+  const [recipes, setRecipes] = useState([])
+
+  const handleNameChange = (event) => {
+    event.preventDefault()
+    console.log(event.target.value)
+    setNewName(event.target.value)
+  }
+
+  const handleIngredientsChange = (event) => {
+    event.preventDefault()
+    setNewIngredients(event.target.value)
+  }
+
+  const handleMethodChange = (event) => {
+    event.preventDefault()
+    setNewMethod(event.target.value)
+  }
+
+  const addRecipe = (event) => {
+    event.preventDefault()
+
+    const recipeObject = {
+      name: newName,
+      ingredients: newIngredients,
+      method: newMethod,
+    }
+    console.log("new recipe: ", recipeObject)
+
+    recipeService
+      .createRecipe(recipeObject)
+      .then((returnedRecipe) => {
+        setRecipes(recipes.concat(returnedRecipe)).then(
+          console.log("recipes: ", recipes)
+        )
+        setNewName("")
+        setNewIngredients([])
+        setNewMethod([])
+      })
+      .catch((error) => {
+        console.log(error.message)
+      })
+  }
   return (
-    <form onSubmit={props.addRecipe} className="form">
+    <form onSubmit={addRecipe} className="form">
       <div>
         <p className="sansserif">name: </p>
-        <input
-          className="field"
-          value={props.newName}
-          onChange={props.handleNameChange}
-        />
+        <input className="field" value={newName} onChange={handleNameChange} />
       </div>
       <div>
         <p className="sansserif">ingredients: </p>
         <input
           className="field"
-          value={props.newIngredients}
-          onChange={props.handleIngredientsChange}
+          value={newIngredients}
+          onChange={handleIngredientsChange}
         />
       </div>
       <div>
         <p className="sansserif">method: </p>
         <input
           className="field"
-          value={props.newMethod}
-          onChange={props.handleMethodChange}
+          value={newMethod}
+          onChange={handleMethodChange}
         />
       </div>
       <div>

@@ -7,6 +7,15 @@ const SearchPage = () => {
   const [recipeListDefault, setRecipeListDefault] = useState()
   const [recipeList, setRecipeList] = useState()
 
+  const fetchDate = async () => {
+    return await fetch("/api/recipes")
+      .then((response) => response.json())
+      .then((data) => {
+        setRecipeList(data)
+        setRecipeListDefault(data)
+      })
+  }
+
   useEffect(() => {
     console.log("initialRecipes")
     recipeService.getAll().then((initialRecipes) => {

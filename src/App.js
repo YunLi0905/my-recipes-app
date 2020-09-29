@@ -18,10 +18,6 @@ import Recipe from "./components/recipe"
 const App = () => {
   const [recipes, setRecipes] = useState([])
 
-  const [newName, setNewName] = useState("")
-  const [newIngredients, setNewIngredients] = useState([])
-  const [newMethod, setNewMethod] = useState([])
-
   useEffect(() => {
     console.log("initialRecipes")
     recipeService.getAll().then((initialRecipes) => {
@@ -30,48 +26,6 @@ const App = () => {
   }, [])
 
   console.log("recipes: ", recipes)
-
-  const handleNameChange = (event) => {
-    event.preventDefault()
-    console.log(event.target.value)
-    setNewName(event.target.value)
-  }
-
-  const handleIngredientsChange = (event) => {
-    event.preventDefault()
-    setNewIngredients(event.target.value)
-  }
-
-  const handleMethodChange = (event) => {
-    event.preventDefault()
-    setNewMethod(event.target.value)
-  }
-
-  const addRecipe = (event) => {
-    event.preventDefault()
-
-    const recipeObject = {
-      name: newName,
-      ingredients: newIngredients,
-      method: newMethod,
-    }
-
-    console.log("new recipe: ", recipeObject)
-
-    recipeService
-      .createRecipe(recipeObject)
-      .then((returnedRecipe) => {
-        setRecipes(recipes.concat(returnedRecipe)).then(
-          console.log("recipes: ", recipes)
-        )
-        setNewName("")
-        setNewIngredients([])
-        setNewMethod([])
-      })
-      .catch((error) => {
-        console.log(error.message)
-      })
-  }
 
   const match = useRouteMatch("/recipes/:id")
   const recipe = match
@@ -85,9 +39,7 @@ const App = () => {
           <Link className="navbarFont" to="/">
             Home
           </Link>
-          <Link className="navbarFont" to="/recipes">
-            Reseptit
-          </Link>
+
           <Link className="navbarFont" to="/create">
             Lisää resepti
           </Link>
@@ -100,9 +52,7 @@ const App = () => {
         <Route path="/create">
           <RecipeForm />
         </Route>
-        <Route path="/recipes">
-          <Recipes recipes={recipes} />
-        </Route>
+
         <Route path="/">
           <Home />
         </Route>
