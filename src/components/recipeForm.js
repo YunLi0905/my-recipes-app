@@ -2,11 +2,11 @@ import React, { useState } from "react"
 import recipeService from "../services/recipeService"
 import "../App.css"
 
-const RecipeForm = () => {
+const RecipeForm = ({ recipes, setRecipes }) => {
   const [newName, setNewName] = useState("")
   const [newIngredients, setNewIngredients] = useState([])
   const [newMethod, setNewMethod] = useState([])
-  const [recipes, setRecipes] = useState([])
+  //  const [recipes, setRecipes] = useState([])
 
   const handleNameChange = (event) => {
     event.preventDefault()
@@ -37,9 +37,9 @@ const RecipeForm = () => {
     recipeService
       .createRecipe(recipeObject)
       .then((returnedRecipe) => {
-        setRecipes(recipes.concat(returnedRecipe)).then(
-          console.log("recipes: ", recipes)
-        )
+        console.log("RECIPES =", recipes)
+        console.log("NEW RECIPE =", returnedRecipe)
+        setRecipes(recipes.concat(returnedRecipe))
         setNewName("")
         setNewIngredients([])
         setNewMethod([])

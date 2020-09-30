@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import Recipes from "../components/recipes"
+
 import recipeService from "../services/recipeService"
 import Filter from "../components/filter"
 import SearchedRecipes from "../components/searchedRecipes"

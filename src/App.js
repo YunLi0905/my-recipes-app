@@ -50,7 +50,7 @@ const App = () => {
           <Recipe recipe={recipe} />
         </Route>
         <Route path="/recipes">
-          <RecipeForm />
+          <RecipeForm recipes={recipes} setRecipes={setRecipes} />
           <Recipes recipes={recipes} />
         </Route>
 
