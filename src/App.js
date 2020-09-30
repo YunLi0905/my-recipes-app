@@ -40,7 +40,7 @@ const App = () => {
             Home
           </Link>
 
-          <Link className="navbarFont" to="/create">
+          <Link className="navbarFont" to="/recipes">
             Lisää resepti
           </Link>
         </ul>
@@ -49,8 +49,9 @@ const App = () => {
         <Route path="/recipes/:id">
           <Recipe recipe={recipe} />
         </Route>
-        <Route path="/create">
+        <Route path="/recipes">
           <RecipeForm />
+          <Recipes recipes={recipes} />
         </Route>
 
         <Route path="/">

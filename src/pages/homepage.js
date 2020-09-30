@@ -35,7 +35,6 @@ const Home = () => {
         </div>
         <br />
       </h2>
-      <Recipes recipes={recipes} searchTerm={searchTerm} />
     </div>
   )
 }

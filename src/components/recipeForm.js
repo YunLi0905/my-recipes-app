@@ -49,33 +49,39 @@ const RecipeForm = () => {
       })
   }
   return (
-    <form onSubmit={addRecipe} className="form">
-      <div>
-        <p className="sansserif">name: </p>
-        <input className="field" value={newName} onChange={handleNameChange} />
-      </div>
-      <div>
-        <p className="sansserif">ingredients: </p>
-        <input
-          className="field"
-          value={newIngredients}
-          onChange={handleIngredientsChange}
-        />
-      </div>
-      <div>
-        <p className="sansserif">method: </p>
-        <input
-          className="field"
-          value={newMethod}
-          onChange={handleMethodChange}
-        />
-      </div>
-      <div>
-        <p>
-          <button type="submit">add</button>
-        </p>
-      </div>
-    </form>
+    <div>
+      <form onSubmit={addRecipe} className="form">
+        <div>
+          <p className="sansserif">name: </p>
+          <input
+            className="field"
+            value={newName}
+            onChange={handleNameChange}
+          />
+        </div>
+        <div>
+          <p className="sansserif">ingredients: </p>
+          <input
+            className="field"
+            value={newIngredients}
+            onChange={handleIngredientsChange}
+          />
+        </div>
+        <div>
+          <p className="sansserif">method: </p>
+          <input
+            className="field"
+            value={newMethod}
+            onChange={handleMethodChange}
+          />
+        </div>
+        <div>
+          <p>
+            <button type="submit">add</button>
+          </p>
+        </div>
+      </form>
+    </div>
   )
 }
 
