@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Recipes from "../components/recipes"
 import recipeService from "../services/recipeService"
 import Filter from "../components/filter"
+import SearchedRecipes from "../components/searchedRecipes"
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("")
@@ -35,6 +36,7 @@ const Home = () => {
         </div>
         <br />
       </h2>
+      <SearchedRecipes recipes={recipes} searchTerm={searchTerm} />
     </div>
   )
 }
